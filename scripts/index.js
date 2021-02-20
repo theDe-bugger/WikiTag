@@ -8,8 +8,8 @@ const setupUI = (user) => {
         // toggle UI elements
         loggedInLinks.forEach(item => item.style.display = 'block');
         loggedOutLinks.forEach(item => item.style.display = 'none');
-        $.ajax(settings).done(function (response) {
-          console.log(response);
+        $.ajax(settings1).done(function (response1) {
+          console.log(response1);
         });
     } else {
         // toggle UI elements
@@ -53,10 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // image to text api call
+var url = JSON.parse(sessionStorage.getItem("link"));
 const settings1 = {
   "async": true,
   "crossDomain": true,
-  "url": "https://ocrly-image-to-text.p.rapidapi.com/?imageurl=https%3A%2F%2Fi.imgur.com%2Ffx4yoZr.png&filename=idk.jpg",
+  "url": "https://ocrly-image-to-text.p.rapidapi.com/?imageurl="+ url + "&filename=input-file.png",
   "method": "GET",
   "headers": {
     "x-rapidapi-key": "c12f34c8e9msh01784338cef236ep136250jsnc9e9496eeb19",
@@ -64,6 +65,3 @@ const settings1 = {
   }
 };
 
-$.ajax(settings1).done(function (response) {
-  console.log(response);
-});

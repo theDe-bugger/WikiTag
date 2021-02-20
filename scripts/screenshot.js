@@ -61,12 +61,12 @@ window.addEventListener("load", startCapture(displayMediaOptions));
   window.addEventListener("load", startCapture(displayMediaOptions), false);
 
   function uploadImage(message){
-    const ref = storage.ref();
+    const ref = storage.ref()
     const name = 'input-file'
   // Data URL string
       ref.child(name).putString(message, 'data_url').then(snapshot => snapshot.ref.getDownloadURL())
         .then(url=>{  
-      console.log(url);
+      sessionStorage.setItem("link",JSON.stringify(url))
     })
     
   }
