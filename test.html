@@ -1,6 +1,4 @@
 <iframe id="test" src="https://en.wikipedia.org/wiki/Dogecoin" height="480" width="720" title="Iframe Example"></iframe>
 <script>
-    fetch(document.location.href.test.document)
-    .then(response => response.text())
-    .then(pageSource => console.log(pageSource))
+    console.log(document.getElementById("test").src);
 </script>
