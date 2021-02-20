@@ -66,7 +66,23 @@ window.addEventListener("load", startCapture(displayMediaOptions));
   // Data URL string
       ref.child(name).putString(message, 'data_url').then(snapshot => snapshot.ref.getDownloadURL())
         .then(url=>{  
-      sessionStorage.setItem("link",JSON.stringify(url))
+      console.log(url);
+      settings1.url = "https://ocrly-image-to-text.p.rapidapi.com/?imageurl="+ url + "&filename=input-file.png"
+      $.ajax(settings1).done(function (response1) {
+        console.log(response1);
+      });
     })
-    
   }
+  // image to text api call
+var url = JSON.parse(sessionStorage.getItem("link"));
+const settings1 = {
+  "async": true,
+  "crossDomain": true,
+  "url": "",
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-key": "c12f34c8e9msh01784338cef236ep136250jsnc9e9496eeb19",
+    "x-rapidapi-host": "ocrly-image-to-text.p.rapidapi.com"
+  }
+};
+
