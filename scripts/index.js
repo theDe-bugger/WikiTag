@@ -8,7 +8,9 @@ const setupUI = (user) => {
         // toggle UI elements
         loggedInLinks.forEach(item => item.style.display = 'block');
         loggedOutLinks.forEach(item => item.style.display = 'none');
-        
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+        });
     } else {
         // toggle UI elements
         loggedInLinks.forEach(item => item.style.display = 'none');
@@ -48,4 +50,20 @@ document.addEventListener('DOMContentLoaded', function() {
   var items = document.querySelectorAll('.collapsible');
   M.Collapsible.init(items);
 
+});
+
+// image to text api call
+const settings1 = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://ocrly-image-to-text.p.rapidapi.com/?imageurl=https%3A%2F%2Fi.imgur.com%2Ffx4yoZr.png&filename=idk.jpg",
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-key": "c12f34c8e9msh01784338cef236ep136250jsnc9e9496eeb19",
+    "x-rapidapi-host": "ocrly-image-to-text.p.rapidapi.com"
+  }
+};
+
+$.ajax(settings1).done(function (response) {
+  console.log(response);
 });

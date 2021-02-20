@@ -1,7 +1,7 @@
 const settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://ocrly-image-to-text.p.rapidapi.com/?imageurl=" + url +"&filename=sample.jpg",
+	"url": "https://ocrly-image-to-text.p.rapidapi.com/?imageurl=https://i.imgur.com/7jlJynM.png&filename=sample.jpg",
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "c12f34c8e9msh01784338cef236ep136250jsnc9e9496eeb19",
