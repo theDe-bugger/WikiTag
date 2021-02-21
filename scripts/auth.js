@@ -2,7 +2,7 @@
 auth.onAuthStateChanged(user => {
     if (user) {
         // get data
-        db.collection("pages").get().then(snapshot=>{
+        db.collection("game").onSnapshot(snapshot=>{
         setupGuides(snapshot.docs);
         setupUI(user)
     });        
@@ -13,6 +13,23 @@ auth.onAuthStateChanged(user => {
     console.log('user logged out');
     }
   })
+
+// create new guide
+const createForm = document.querySelector('#create-form');
+createForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  db.collection('game').add({
+    User: createForm.title.value,
+    CurrentPage: createForm.content.value
+  }).then(() => {
+    // close the create modal & reset form
+    const modal = document.querySelector('#modal-create');
+    M.Modal.getInstance(modal).close();
+    createForm.reset();
+  }).catch(err => {
+    console.log(err.message);
+  });
+});
 
 // signup
 const signupForm = document.querySelector('#signup-form');
